@@ -14,7 +14,7 @@ namespace Course.api.Filters
         {
             if (!context.ModelState.IsValid)
             {
-                var validaCampoViewModel = new ValidaCampoViewModelOutput(context.ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
+                var validaCampoViewModel = new ValidaCampoViewModelOutput(context.ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage));
                 context.Result = new BadRequestObjectResult(validaCampoViewModel);
             }
         }

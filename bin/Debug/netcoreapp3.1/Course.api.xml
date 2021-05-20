@@ -11,5 +11,12 @@
             <param name="loginViewModelInput">View model do login</param>
             <returns>Retorna status ok, dados do usuario e o token em caso de exiistir</returns>
         </member>
+        <member name="M:Course.api.Controllers.UsuarioController.Registrar(Course.api.Models.Usuarios.RegistroViewModelInput)">
+            <summary>
+            teste1
+            </summary>
+            <param name="registroViewModelInput">View model do registro</param>
+            <returns>Retorna status ok, dados do usuario e o token em caso de exiistir</returns>
+        </member>
     </members>
 </doc>

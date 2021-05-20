@@ -31,6 +31,14 @@ namespace Course.api.Controllers
             return Ok(loginViewModelInput);
         }
 
+        /// <summary>
+        /// teste1
+        /// </summary>
+        /// <param name="registroViewModelInput">View model do registro</param>
+        /// <returns>Retorna status ok, dados do usuario e o token em caso de exiistir</returns>
+        [SwaggerResponse(statusCode: 200, description: "Sucesso ao registrar usuario", Type = typeof(LoginViewModelInput))]
+        [SwaggerResponse(statusCode: 400, description: "Campos obrigatorios", Type = typeof(ValidaCampoViewModelOutput))]
+        [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
         [HttpPost]
         [ValidacaoModelStateCustomizado]
         [Route("registrar")]
