@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Course.api</name>
+    </assembly>
+    <members>
+        <member name="M:Course.api.Controllers.UsuarioController.Logar(Course.api.Models.Usuarios.LoginViewModelInput)">
+            <summary>
+            teste
+            </summary>
+            <param name="loginViewModelInput">View model do login</param>
+            <returns>Retorna status ok, dados do usuario e o token em caso de exiistir</returns>
+        </member>
+    </members>
+</doc>
