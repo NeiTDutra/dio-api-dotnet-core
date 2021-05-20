@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Course.api.Filters;
 using Course.api.Models;
 using Course.api.Models.Usuarios;
 using Microsoft.AspNetCore.Http;
@@ -23,13 +24,15 @@ namespace Course.api.Controllers
         [SwaggerResponse(statusCode: 400, description: "Campos obrigatorios", Type = typeof(ValidaCampoViewModelOutput))]
         [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
         [HttpPost]
+        [ValidacaoModelStateCustomizado]
         [Route("login")]
         public IActionResult Logar(LoginViewModelInput loginViewModelInput) 
-        {
+        {   
             return Ok(loginViewModelInput);
         }
 
         [HttpPost]
+        [ValidacaoModelStateCustomizado]
         [Route("registrar")]
         public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
         {
