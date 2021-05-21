@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Course.api.Business.Entities;
 using Course.api.Filters;
+using Course.api.Infrastructure.Data;
 using Course.api.Models;
 using Course.api.Models.Usuarios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Course.api.Controllers
@@ -26,8 +24,8 @@ namespace Course.api.Controllers
         [HttpPost]
         [ValidacaoModelStateCustomizado]
         [Route("login")]
-        public IActionResult Logar(LoginViewModelInput loginViewModelInput) 
-        {   
+        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
+        {
             return Ok(loginViewModelInput);
         }
 
@@ -44,6 +42,18 @@ namespace Course.api.Controllers
         [Route("registrar")]
         public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
         {
+            var optionsBuilder = new DbContextOptionsBuilder<CourseDbContext>();
+
+            optionsBuilder.UseSqlServer("Server=localhost;Database=db_courseapi;user=nei;password=Senha#2020");
+            CourseDbContext context = new CourseDbContext(optionsBuilder.Options);
+
+            var aluno = new User();
+            aluno.name = registroViewModelInput.Login;
+            aluno.email = registroViewModelInput.Email;
+            aluno.password = registroViewModelInput.Senha;
+            context.User.Add(aluno);
+            context.SaveChanges();
+
             return Created("", registroViewModelInput);
         }
     }
